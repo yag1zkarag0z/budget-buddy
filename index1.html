@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BudgetBuddy | Smart Finance Tracker</title>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="premium-navbar">
+        <div class="nav-brand">
+            <i class="ph-fill ph-wallet highlight-icon"></i>
+            <h2>Budget<span class="highlight">Buddy</span></h2>
+        </div>
+        <div class="nav-status">
+            <span class="status-badge"><i class="ph ph-cpu"></i> FinanceEngine Online</span>
+        </div>
+    </nav>
+
+    <main class="app-container">
+        
+        <header class="dashboard-header">
+            <div class="welcome-text">
+                <h3>Financial Analytics</h3>
+                <p>Track income, optimize expenses, and view live breakdowns</p>
+            </div>
+        </header>
+
+        <div class="metrics-grid">
+            <div class="metric-card income">
+                <div class="card-header">
+                    <span>Total Income</span>
+                    <div class="card-icon"><i class="ph ph-arrow-up-right"></i></div>
+                </div>
+                <div class="card-value" id="total-income">$0.00</div>
+            </div>
+            
+            <div class="metric-card expense">
+                <div class="card-header">
+                    <span>Total Expenses</span>
+                    <div class="card-icon"><i class="ph ph-arrow-down-left"></i></div>
+                </div>
+                <div class="card-value" id="total-expense">$0.00</div>
+            </div>
+            
+            <div class="metric-card balance">
+                <div class="card-header">
+                    <span>Net Balance</span>
+                    <div class="card-icon"><i class="ph ph-scales"></i></div>
+                </div>
+                <div class="card-value" id="net-balance">$0.00</div>
+            </div>
+        </div>
+
+        <div class="main-grid">
+            
+            <div class="content-card form-section">
+                <h3><i class="ph ph-plus-circle"></i> Add New Transaction</h3>
+                <form id="transaction-form">
+                    <div class="input-group">
+                        <label for="tx-description">Description</label>
+                        <input type="text" id="tx-description" placeholder="e.g., Grocery Shopping" required>
+                    </div>
+                    
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label for="tx-amount">Amount ($)</label>
+                            <input type="number" id="tx-amount" step="0.01" placeholder="0.00" required>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="tx-type">Type</label>
+                            <select id="tx-type">
+                                <option value="expense">Expense</option>
+                                <option value="income">Income</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="tx-category">Category</label>
+                        <select id="tx-category">
+                            <option value="Food">Food & Drinks</option>
+                            <option value="Rent">Rent & Bills</option>
+                            <option value="Entertainment">Entertainment</option>
+                            <option value="Salary">Salary (Income)</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="submit-btn">
+                        <i class="ph ph-paper-plane-right"></i> Add Transaction
+                    </button>
+                </form>
+            </div>
+
+            <div class="content-card chart-section">
+                <h3><i class="ph ph-chart-donut"></i> Expense Breakdown</h3>
+                <div class="chart-wrapper">
+                    <canvas id="expenseChart"></canvas>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="content-card table-section">
+            <h3><i class="ph ph-clock-counter-clockwise"></i> Recent Transactions</h3>
+            <div class="table-wrapper">
+                <table class="finance-table">
+                    <thead>
+                        <tr>
+                            <th>Description</th>
+                            <th>Category</th>
+                            <th>Type</th>
+                            <th>Amount</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="transaction-history"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <footer class="app-footer">
+            <div><span>&copy; 2026 BudgetBuddy. All rights reserved.</span></div>
+            <div class="footer-signature">
+                <span>by</span>
+                <a href="https://www.linkedin.com/in/yagiz-karagoz-b18820358" target="_blank">Yagiz Karagoz</a>
+            </div>
+        </footer>
+
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
